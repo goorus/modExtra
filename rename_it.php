@@ -1,6 +1,6 @@
 <?php
 
-$repl1 = 'yourName';
+$repl1 = 'YourName';
 $repl2 = strtolower($repl1);
 
 $find1 = 'modExtra';
@@ -34,6 +34,10 @@ while ($plan_i < count($plan)) {
             mkdir($target_path . $dst_name, 0777, true);
             $plan[] = $src_name;
         } else {
+            $dir = dirname($target_path . $dst_name);
+            if (!is_dir($dir)) {
+                mkdir($dir, 0777, true);
+            }
             $content = str_replace(
                 array($find1, $find2),
                 array($repl1, $repl2),
